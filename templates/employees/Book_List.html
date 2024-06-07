@@ -1,0 +1,9 @@
+<h1>Список произведений</h1>
+{% for i in emp %}
+<br>
+<img src="{{ i.image.url}}" width="350" height="250">
+<h2>Название - {{ i.name }}</h2>
+<p>Статус произведения - {{ i.programming_status }}</p>
+<a href="/Books_list/{{ i.id}}">Подробнее</a>
+<br>
+{% endfor %}
