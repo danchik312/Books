@@ -14,7 +14,7 @@ class Books_list(models.Model):
     image = models.ImageField(upload_to='images/')
     about_emp = models.TextField()
     book_status = models.CharField(max_length=100, choices=BOOK_STATUS, null=True)
-    rezume = models.FileField(upload_to='rezume/')
+    description = models.FileField(upload_to='descriptions/')
     date_of_issue = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
