@@ -5,6 +5,9 @@ urlpatterns = [
     path('personal_info/', views.personal_info, name='personal_info'),
     path('hobbies/', views.hobbies, name='hobbies'),
 
+    path('all_books/', views.all_books),
+    path('books/', views.books_tags_view),
+
     path('Books_list/', views.Book_List_view),
     path('Books_list/<int:id>/', views.Book_Detail_view),
 

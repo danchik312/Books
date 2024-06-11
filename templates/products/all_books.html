@@ -1,0 +1,16 @@
+<button><a href="/books/">Почитать</a></button>
+<ol>
+    {% for i in products %}
+    <li>
+        <h1>{{ i.title }}</h1>
+        <p>{{ i.price }}</p>
+
+        {% for tag in i.tags.all %}
+        <p>
+            #{{ tag.name }}
+        </p>
+        {% endfor %}
+
+    </li>
+    {% endfor %}
+</ol>

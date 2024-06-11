@@ -1,0 +1,29 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<h1 class="h1_name">Название - {{ bk_id.name }} </h1>
+<h1>Название - {{ bk_id.name}}</h1>
+<p>Почта Автора - {{ bk_id.email}}</p>
+<img src="{{ bk_id.image.url}}" width="350" height="250">
+<p>о книге - {{ bk_id.about_bk }}</p>
+<p>статус произведения - {{ bk_id.programming_status }}</p>
+<a href="{{ bk_id.github }}">Перейти в GITGUB</a>
+<data>Дата создания поста - {{ bk_id.creater_at }}</data>
+
+<ul>
+    {% for i in bk_id.reviews_books.all %}
+
+    <li>
+        <h1>{{ i.stars }}</h1>
+        <p>{{ i.text }}</p>
+        <p>{{ i.created_at }}</p>
+    </li>
+
+    {% endfor %}
+</ul>
+
+
+{% include '../footer.html' %}

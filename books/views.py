@@ -23,12 +23,12 @@ def random_numbers(request):
 
 def Book_Detail_view(request, id):
     if request.method == "GET":
-        emp_id = get_object_or_404(models.Books_list, id=id)
+        bk_id = get_object_or_404(models.Books_list, id=id)
         return render(
             request,
             template_name="Books_list/Book_Detail.html",
             context={
-                "emp_id": emp_id
+                "bk_id": bk_id
             }
         )
 
@@ -40,6 +40,30 @@ def Book_List_view(request):
             request,
             template_name='Books_list/Book_List.html',
             context={
-                'emp': queryset
+                'bk': queryset
             }
         )
+
+def books_tags_view(request):
+    if request.method == 'GET':
+        drink_tags = models.Products.objects.filter(tags__name='Вода').order_by('-id')
+        return render(
+            request,
+            template_name='products/drink_tags.html',
+            context={'drink_tags': drink_tags}
+        )
+
+
+# all products
+
+def all_books(request):
+    if request.method == 'GET':
+        products = models.Products.objects.filter().order_by('-id')
+        return render(
+            request,
+            template_name='products/all_products.html',
+            context={
+                'products': products
+            }
+        )
+
