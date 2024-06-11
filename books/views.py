@@ -26,7 +26,7 @@ def Book_Detail_view(request, id):
         bk_id = get_object_or_404(models.Books_list, id=id)
         return render(
             request,
-            template_name="Books_list/Book_Detail.html",
+            template_name="books/Book_Detail.html",
             context={
                 "bk_id": bk_id
             }
@@ -38,7 +38,7 @@ def Book_List_view(request):
         queryset = models.Books_list.objects.filter().order_by('-id')
         return render(
             request,
-            template_name='Books_list/Book_List.html',
+            template_name='books/Book_List.html',
             context={
                 'bk': queryset
             }
@@ -46,11 +46,11 @@ def Book_List_view(request):
 
 def books_tags_view(request):
     if request.method == 'GET':
-        drink_tags = models.Products.objects.filter(tags__name='Вода').order_by('-id')
+        teen_tags = models.Products.objects.filter(tags__name='Подростковый').order_by('-id')
         return render(
             request,
-            template_name='products/drink_tags.html',
-            context={'drink_tags': drink_tags}
+            template_name='products/books_tags.html',
+            context={'teen_tags': teen_tags}
         )
 
 
@@ -61,7 +61,7 @@ def all_books(request):
         products = models.Products.objects.filter().order_by('-id')
         return render(
             request,
-            template_name='products/all_products.html',
+            template_name='products/all_books.html',
             context={
                 'products': products
             }
