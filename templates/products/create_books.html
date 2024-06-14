@@ -1,0 +1,17 @@
+{% load static %}
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'css/CRUD.css' %}">
+
+<form action="/create_books/" method="POST" enctype="multipart/form-data"  class="ui-form">
+<h3>Добавить книгу</h3>
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+<p><input type="submit" value="Добавить"></p>
+<p><input type="reset" value="Очистить"></p>
+</form>
+
+
+{% include '../footer.html' %}

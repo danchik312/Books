@@ -67,3 +67,47 @@ def all_books(request):
             }
         )
 
+def edit_books_view(request, id):
+    bk_id = get_object_or_404(models.Employees, id=id)
+    if request.method == 'POST':
+        form = forms.EmployeeForm(request.POST, instance=bk_id)
+        form.save()
+        return HttpResponse('<h3>Books updated successfully!</h3>'
+                            '<a href="/employees/">Список книг</a>')
+    else:
+        form = forms.Books_list_Form(instance=bk_id)
+    return render(
+        request,
+        template_name='books/edit_books.html',
+        context={
+            'form': form,
+            'bk_id': bk_id
+        }
+    )
+
+
+# delete employee
+def drop_books_view(request, id):
+    bk_id = get_object_or_404(models.Books_list, id=id)
+    bk_id.delete()
+    return HttpResponse('<h3>Book delete successfully!</h3>'
+                        '<a href="/employees/">Список книг</a>')
+
+
+# create employee
+
+def create_books_view(request):
+    if request.method == "POST":
+        form = forms.Books_list_Form(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('<h3>Book created successfully!</h3>'
+                                '<a href="/books/">Список книг</a>')
+    else:
+        form = forms.Books_list_Form()
+
+    return render(
+        request,
+        template_name='books/create_books.html',
+        context={'form': form}
+    )
