@@ -73,7 +73,7 @@ def edit_books_view(request, id):
         form = forms.EmployeeForm(request.POST, instance=bk_id)
         form.save()
         return HttpResponse('<h3>Books updated successfully!</h3>'
-                            '<a href="/employees/">Список книг</a>')
+                            '<a href="/Books_list/">Список книг</a>')
     else:
         form = forms.Books_list_Form(instance=bk_id)
     return render(
@@ -91,7 +91,7 @@ def drop_books_view(request, id):
     bk_id = get_object_or_404(models.Books_list, id=id)
     bk_id.delete()
     return HttpResponse('<h3>Book delete successfully!</h3>'
-                        '<a href="/employees/">Список книг</a>')
+                        '<a href="/Books_list/">Список книг</a>')
 
 
 # create employee
@@ -102,7 +102,7 @@ def create_books_view(request):
         if form.is_valid():
             form.save()
             return HttpResponse('<h3>Book created successfully!</h3>'
-                                '<a href="/books/">Список книг</a>')
+                                '<a href="/Books_list/">Список книг</a>')
     else:
         form = forms.Books_list_Form()
 
