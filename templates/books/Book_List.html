@@ -11,6 +11,18 @@
 <br>
 {% endfor %}
 
+{% for j in quote %}
+<div class="card">
+  <div class="card-body">
+    {{ j.text }}
+    <p>
+      {{ j.author }}
+    </p>
+  </div>
+</div>
+<br>
+{%endfor%}
+<br>
 
 
 {% include '../footer.html' %}
