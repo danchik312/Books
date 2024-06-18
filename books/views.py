@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from datetime import datetime
 import random
 from django.views import generic
+from . import models, forms
+
 class SearchView(generic.ListView):
     template_name = 'books/Book_List.html'
     context_object_name = 'bk'
@@ -59,7 +61,7 @@ def random_numbers(request):
 
 class BooksListView(generic.ListView):
     template_name = 'books/Book_List.html'
-    context_object_name = 'bk'
+    context_object_name = 'books'
     model = models.Books_list
     ordering = ['-id']
 
