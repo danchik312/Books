@@ -3,10 +3,12 @@ from datetime import datetime
 import random
 from django.views import generic
 from . import models, forms
+from django.shortcuts import render
+
 
 class SearchView(generic.ListView):
     template_name = 'books/Book_List.html'
-    context_object_name = 'bk'
+    context_object_name = 'books'
     paginate_by = 5
 
     def get_queryset(self):
@@ -72,7 +74,7 @@ class BooksListView(generic.ListView):
 
 def books_tags_view(request):
     if request.method == 'GET':
-        teen_tags = models.Products.objects.filter(tags__name='Подростковый').order_by('-id')
+        teen_tags = models.Products.objects.filter(tags__name='teen').order_by('-id')
         return render(
             request,
             template_name='products/books_tags.html',
