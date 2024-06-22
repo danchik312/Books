@@ -1,0 +1,8 @@
+<center>
+    <h1>Регистрация</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Регистрация</button>
+    </form>
+</center>

@@ -1,0 +1,19 @@
+<ul>
+    {% for i in object_list %}
+    <li>
+        <h1>Приветсвую вас - {{ i.username }}</h1>
+        <p>Почта - {{ i.email }}</p>
+        <p> {{ i.first_name }}</p>
+        <p>Опыт - {{ i.years_of_exp }}</p>
+        {% if i.rank %}
+        <p>Вы являетесь {{ i.rank }}</p>
+        {% else %}
+        <p>Ранг endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+<form action="{% url 'fans:login' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Выйти из аккаунта</button>
+</form>
