@@ -12,13 +12,13 @@ CONTENT = (
     ('Manga', 'Manga'),
     ('Anime', 'Anime'),
     ('Manha', 'Manha'),
-    ('Ranobe', 'Ranobe')
+    ('Ranobe', 'Ranobe'),
 )
 PHONE = (
-    ('Iphone','Iphone')
-    ('Samsung', 'Samsung')
-    ('Xiaomi', 'Xiaomi')
-    ('Another', 'Another')
+    ('Iphone','Iphone'),
+    ('Samsung', 'Samsung'),
+    ('Xiaomi', 'Xiaomi'),
+    ('Another', 'Another'),
 )
 
 
