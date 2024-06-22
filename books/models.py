@@ -7,7 +7,8 @@ class Quote(models.Model):
     author = models.CharField(max_length=120)
 
     def __str__(self):
-        return f'{self.text} - {self.author}'
+        return f"{self.text} - {self.author}"
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=120)
@@ -29,34 +30,38 @@ class Products(models.Model):
 class Books_list(models.Model):
 
     BOOK_STATUS = (
-        ('Онгоинг', 'Онгоинг'),
-        ('Анонс', 'Анонс'),
-        ('Завершен', 'Завершен'),
-        ('Приостановлен', 'Приостановлен'),
+        ("Онгоинг", "Онгоинг"),
+        ("Анонс", "Анонс"),
+        ("Завершен", "Завершен"),
+        ("Приостановлен", "Приостановлен"),
     )
 
     name = models.CharField(max_length=100)
-    email = models.EmailField(default='@gmail.com')
-    image = models.ImageField(upload_to='images/')
+    email = models.EmailField(default="@gmail.com")
+    image = models.ImageField(upload_to="images/")
     about_bk = models.TextField()
     book_status = models.CharField(max_length=100, choices=BOOK_STATUS, null=True)
-    description = models.FileField(upload_to='descriptions/')
+    description = models.FileField(upload_to="descriptions/")
     date_of_issue = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name}-{self.book_status}'
+        return f"{self.name}-{self.book_status}"
 
     class Meta:
-        verbose_name = 'произведение'
-        verbose_name_plural = 'произведения'
+        verbose_name = "произведение"
+        verbose_name_plural = "произведения"
+
 
 class ReviewsBooks(models.Model):
-    reviews_bk = models.ForeignKey(Books_list, on_delete=models.CASCADE,
-                                    related_name='reviews_books')
+    reviews_bk = models.ForeignKey(
+        Books_list, on_delete=models.CASCADE, related_name="reviews_books"
+    )
     text = models.TextField()
-    stars = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
+    stars = models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)], null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.stars}-{self.reviews_bk}'
+        return f"{self.stars}-{self.reviews_bk}"

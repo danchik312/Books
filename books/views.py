@@ -7,17 +7,20 @@ from django.shortcuts import render
 
 
 class SearchView(generic.ListView):
-    template_name = 'books/Book_List.html'
-    context_object_name = 'books'
+    template_name = "books/Book_List.html"
+    context_object_name = "books"
     paginate_by = 5
 
     def get_queryset(self):
-        return models.Books_list.objects.filter(name__icontains=self.request.GET.get('q')).order_by('-id')
+        return models.Books_list.objects.filter(
+            name__icontains=self.request.GET.get("q")
+        ).order_by("-id")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['q'] = self.request.GET.get('q')
+        context["q"] = self.request.GET.get("q")
         return context
+
 
 def personal_info(request):
     name = "Даниэль"
@@ -25,13 +28,16 @@ def personal_info(request):
     age = 17
     return HttpResponse(f"Имя: {name}, Фамилия: {surname}, Возраст: {age}")
 
+
 def hobbies(request):
     hobbies_list = "хобби: Чтение манг, Программирование, Спорт"
     return HttpResponse(hobbies_list)
 
+
 def current_time(request):
     now = datetime.now().strftime("%H:%M:%S")
     return HttpResponse(f"Текущее время: {now}")
+
 
 def random_numbers(request):
     numbers = [random.randint(1, 100) for _ in range(5)]
@@ -61,39 +67,41 @@ def random_numbers(request):
 #             }
 #         )
 
+
 class BooksListView(generic.ListView):
-    template_name = 'books/Book_List.html'
-    context_object_name = 'books'
+    template_name = "books/Book_List.html"
+    context_object_name = "books"
     model = models.Books_list
-    ordering = ['-id']
+    ordering = ["-id"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['quote'] = models.Quote.objects.order_by('-id')
+        context["quote"] = models.Quote.objects.order_by("-id")
         return context
 
+
 def books_tags_view(request):
-    if request.method == 'GET':
-        teen_tags = models.Products.objects.filter(tags__name='teen').order_by('-id')
+    if request.method == "GET":
+        teen_tags = models.Products.objects.filter(tags__name="teen").order_by("-id")
         return render(
             request,
-            template_name='products/books_tags.html',
-            context={'teen_tags': teen_tags}
+            template_name="products/books_tags.html",
+            context={"teen_tags": teen_tags},
         )
 
 
 # all products
 
+
 def all_books(request):
-    if request.method == 'GET':
-        products = models.Products.objects.filter().order_by('-id')
+    if request.method == "GET":
+        products = models.Products.objects.filter().order_by("-id")
         return render(
             request,
-            template_name='products/all_books.html',
-            context={
-                'products': products
-            }
+            template_name="products/all_books.html",
+            context={"products": products},
         )
+
 
 # def edit_books_view(request, id):
 #     bk_id = get_object_or_404(models.Books_list, id=id)
@@ -113,18 +121,17 @@ def all_books(request):
 #         }
 #     )
 class EditBooksView(generic.UpdateView):
-    template_name = 'products/edit_books.html'
+    template_name = "products/edit_books.html"
     form_class = forms.Books_list_Form
-    success_url = '/Books_list/'
+    success_url = "/Books_list/"
 
     def get_object(self, **kwargs):
-        bk_id = self.kwargs.get('id')
+        bk_id = self.kwargs.get("id")
         return get_object_or_404(models.Books_list, id=bk_id)
 
     def form_valid(self, form):
         print(form.cleaned_data)
         return super(EditBooksView, self).form_valid(form=form)
-
 
 
 # def drop_books_view(request, id):
@@ -133,15 +140,16 @@ class EditBooksView(generic.UpdateView):
 #     return HttpResponse('<h3>Book delete successfully!</h3>'
 #                         '<a href="/Books_list/">Список книг</a>')
 class DeleteBooksView(generic.DeleteView):
-    template_name = 'books/confirm_delete.html'
-    success_url = '/Books_list/'
+    template_name = "books/confirm_delete.html"
+    success_url = "/Books_list/"
 
     def get_object(self, **kwargs):
-        bk_id = self.kwargs.get('id')
+        bk_id = self.kwargs.get("id")
         return get_object_or_404(models.Books_list, id=bk_id)
 
 
 # create employee
+
 
 # def create_books_view(request):
 #     if request.method == "POST":
@@ -159,9 +167,9 @@ class DeleteBooksView(generic.DeleteView):
 #         context={'form': form}
 #     )
 class CreateBooksView(generic.CreateView):
-    template_name = 'products/create_books.html',
+    template_name = ("products/create_books.html",)
     form_class = forms.Books_list_Form
-    success_url = '/Books_list/'
+    success_url = "/Books_list/"
 
     def form_valid(self, form):
         print(form.cleaned_data)
@@ -169,10 +177,9 @@ class CreateBooksView(generic.CreateView):
 
 
 class BooksDetailView(generic.DetailView):
-    template_name = 'books/Book_Detail.html'
-    context_object_name = 'bk_id'
+    template_name = "books/Book_Detail.html"
+    context_object_name = "bk_id"
 
     def get_object(self, **kwargs):
-        bk_id = self.kwargs.get('id')
+        bk_id = self.kwargs.get("id")
         return get_object_or_404(models.Books_list, id=bk_id)
-

@@ -12,32 +12,98 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
+        ("auth", "0012_alter_user_first_name_max_length"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AnimeFan',
+            name="AnimeFan",
             fields=[
-                ('user_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-                ('phone_number', models.CharField(default='+996', max_length=14)),
-                ('years_of_exp', models.PositiveIntegerField(default=18, validators=[django.core.validators.MaxValueValidator(99), django.core.validators.MinValueValidator(5)])),
-                ('gender', models.CharField(choices=[('Male', 'Male'), ('Female', 'Female')], max_length=100)),
-                ('bio', models.FileField(blank=True, null=True, upload_to='media/biography/', verbose_name='Загрузите свою биографию')),
-                ('birth_date', models.DateField(null=True, verbose_name='Укажите дату рождения')),
-                ('phone', models.CharField(choices=[('Manga', 'Manga'), ('Anime', 'Anime'), ('Manha', 'Manha'), ('Ranobe', 'Ranobe')], max_length=100)),
-                ('image', models.ImageField(null=True, upload_to='images/', verbose_name='Загрузите ваше фото')),
-                ('preferred_content', models.CharField(choices=[('Manga', 'Manga'), ('Anime', 'Anime'), ('Manha', 'Manha'), ('Ranobe', 'Ranobe')], max_length=100, null=True, verbose_name='Укажите предпочитаемый контент')),
-                ('rank', models.CharField(default='Ранг не определен', max_length=50)),
+                (
+                    "user_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                ("phone_number", models.CharField(default="+996", max_length=14)),
+                (
+                    "years_of_exp",
+                    models.PositiveIntegerField(
+                        default=18,
+                        validators=[
+                            django.core.validators.MaxValueValidator(99),
+                            django.core.validators.MinValueValidator(5),
+                        ],
+                    ),
+                ),
+                (
+                    "gender",
+                    models.CharField(
+                        choices=[("Male", "Male"), ("Female", "Female")], max_length=100
+                    ),
+                ),
+                (
+                    "bio",
+                    models.FileField(
+                        blank=True,
+                        null=True,
+                        upload_to="media/biography/",
+                        verbose_name="Загрузите свою биографию",
+                    ),
+                ),
+                (
+                    "birth_date",
+                    models.DateField(null=True, verbose_name="Укажите дату рождения"),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        choices=[
+                            ("Manga", "Manga"),
+                            ("Anime", "Anime"),
+                            ("Manha", "Manha"),
+                            ("Ranobe", "Ranobe"),
+                        ],
+                        max_length=100,
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        null=True,
+                        upload_to="images/",
+                        verbose_name="Загрузите ваше фото",
+                    ),
+                ),
+                (
+                    "preferred_content",
+                    models.CharField(
+                        choices=[
+                            ("Manga", "Manga"),
+                            ("Anime", "Anime"),
+                            ("Manha", "Manha"),
+                            ("Ranobe", "Ranobe"),
+                        ],
+                        max_length=100,
+                        null=True,
+                        verbose_name="Укажите предпочитаемый контент",
+                    ),
+                ),
+                ("rank", models.CharField(default="Ранг не определен", max_length=50)),
             ],
             options={
-                'verbose_name': 'user',
-                'verbose_name_plural': 'users',
-                'abstract': False,
+                "verbose_name": "user",
+                "verbose_name_plural": "users",
+                "abstract": False,
             },
-            bases=('auth.user',),
+            bases=("auth.user",),
             managers=[
-                ('objects', django.contrib.auth.models.UserManager()),
+                ("objects", django.contrib.auth.models.UserManager()),
             ],
         ),
     ]
