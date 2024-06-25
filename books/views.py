@@ -121,7 +121,7 @@ def all_books(request):
 #         }
 #     )
 class EditBooksView(generic.UpdateView):
-    template_name = "products/edit_books.html"
+    template_name = "books/edit_books.html"
     form_class = forms.Books_list_Form
     success_url = "/Books_list/"
 
@@ -167,7 +167,7 @@ class DeleteBooksView(generic.DeleteView):
 #         context={'form': form}
 #     )
 class CreateBooksView(generic.CreateView):
-    template_name = ("products/create_books.html",)
+    template_name = "books/create_books.html"
     form_class = forms.Books_list_Form
     success_url = "/Books_list/"
 

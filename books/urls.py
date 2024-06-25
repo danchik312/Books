@@ -8,7 +8,9 @@ urlpatterns = [
     path("teen/", views.books_tags_view),
     path("", views.BooksListView.as_view(), name="Books_list"),
     path(
-        "Books_list/<int:id>/", views.BooksDetailView.as_view(), name="BooksDetailView"
+        "Books_list/<int:id>/",
+        views.BooksDetailView.as_view(),
+        name="BooksDetailView",
     ),
     path(
         "Books_list/<int:id>/delete/",
