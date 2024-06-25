@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d31c0774-8291-49fe-b39a-48cdda747bcc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_book/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_book/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/create_books.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/books/create_books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/products/edit_books.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/books/edit_books.html" afterDir="false" />
-    </list>
+    <list default="true" id="d31c0774-8291-49fe-b39a-48cdda747bcc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +127,7 @@
       <workItem from="1718701377201" duration="8969000" />
       <workItem from="1718717156249" duration="1018000" />
       <workItem from="1718960692482" duration="5411000" />
-      <workItem from="1719300657373" duration="4604000" />
+      <workItem from="1719300657373" duration="4980000" />
     </task>
     <servers />
   </component>
