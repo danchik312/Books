@@ -6,7 +6,7 @@ urlpatterns = [
     path("hobbies/", views.hobbies, name="hobbies"),
     path("all_books/", views.all_books),
     path("teen/", views.books_tags_view),
-    path("Books_list/", views.BooksListView.as_view(), name="Books_list"),
+    path("", views.BooksListView.as_view(), name="Books_list"),
     path(
         "Books_list/<int:id>/", views.BooksDetailView.as_view(), name="BooksDetailView"
     ),
